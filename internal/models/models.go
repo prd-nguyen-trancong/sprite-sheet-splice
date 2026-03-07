@@ -12,3 +12,8 @@ type FrameData struct {
 	Width  int `json:"width"`
 	Height int `json:"height"`
 }
+
+type GIFRequest struct {
+	Frames []FrameData `json:"frames"`
+	Delay  int         `json:"delay"`
+}

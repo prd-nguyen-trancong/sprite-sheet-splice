@@ -22,5 +22,7 @@ func corsMiddleware(next http.Handler) http.Handler {
 func NewAPIServer() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/api/export", ExportHandler)
+	mux.HandleFunc("/api/remove-bg", RemoveBGHandler)
+	mux.HandleFunc("/api/export-gif", ExportGIFHandler)
 	return corsMiddleware(mux)
 }

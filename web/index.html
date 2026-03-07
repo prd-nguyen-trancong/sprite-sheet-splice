@@ -28,9 +28,16 @@
         <span id="info-filename"></span>
         <span id="info-dimensions"></span>
       </div>
+      <div id="upload-actions" class="upload-actions hidden">
+        <button id="btn-remove-bg" class="btn btn-outline">Remove Background</button>
+        <div class="input-group" style="flex-direction:row;align-items:center;gap:0.5rem;">
+          <label for="bg-tolerance" style="white-space:nowrap;">Tolerance</label>
+          <input type="number" id="bg-tolerance" min="0" max="255" value="30" style="width:70px;">
+        </div>
+      </div>
     </section>
 
-    <!-- Main Canvas -->
+    <!-- Grid Configuration & Main Canvas -->
     <section class="card hidden" id="canvas-section">
       <h2>2. Configure Grid</h2>
       <div class="grid-controls">
@@ -44,15 +51,16 @@
         </div>
         <button id="btn-generate" class="btn btn-primary">Generate Grid &amp; Preview</button>
       </div>
-      <div class="canvas-wrapper">
+      <p class="section-hint">After generating, drag the grid lines on the canvas to adjust cell boundaries.</p>
+      <div class="canvas-wrapper" id="canvas-wrapper">
         <canvas id="main-canvas"></canvas>
       </div>
     </section>
 
-    <!-- Preview Section -->
+    <!-- Preview & Fine-tune Section -->
     <section class="card hidden" id="preview-section">
       <h2>3. Preview &amp; Fine-tune</h2>
-      <p class="section-hint">Adjust X/Y offsets per frame if needed. Changes apply in real-time.</p>
+      <p class="section-hint">Adjust X/Y/W/H per frame. Use +/- to zoom, drag to pan within each preview.</p>
       <div id="preview-grid" class="preview-grid"></div>
     </section>
 
@@ -67,6 +75,28 @@
         <button id="btn-export" class="btn btn-accent">Export Sliced Images (ZIP)</button>
       </div>
       <div id="export-status" class="export-status hidden"></div>
+    </section>
+
+    <!-- Animation Section -->
+    <section class="card hidden" id="anim-section">
+      <h2>5. Animation Preview</h2>
+      <p class="section-hint">Click frames in the strip below to select/deselect. Adjust FPS and preview the animation.</p>
+      <div class="anim-canvas-wrapper">
+        <canvas id="anim-canvas" width="256" height="256"></canvas>
+      </div>
+      <div id="anim-strip" class="anim-frame-strip"></div>
+      <div class="anim-controls">
+        <div class="input-group">
+          <label for="anim-fps">FPS</label>
+          <input type="number" id="anim-fps" min="1" max="60" value="10" style="width:70px;">
+        </div>
+        <button id="btn-anim-play" class="btn btn-primary">Play</button>
+        <button id="btn-anim-stop" class="btn btn-outline">Stop</button>
+        <button id="btn-anim-select-all" class="btn btn-outline btn-sm">Select All</button>
+        <button id="btn-anim-deselect" class="btn btn-outline btn-sm">Deselect All</button>
+        <button id="btn-export-gif" class="btn btn-accent">Export GIF</button>
+      </div>
+      <div id="gif-status" class="export-status hidden"></div>
     </section>
   </main>
 
