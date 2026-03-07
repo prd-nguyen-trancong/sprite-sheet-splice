@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sprite Sheet Slicer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Sprite Sheet Slicer</h1>
+    <p class="subtitle">Asset Generator for Flutter Flame</p>
+  </header>
+
+  <main>
+    <!-- Upload Section -->
+    <section class="card" id="upload-section">
+      <h2>1. Upload Sprite Sheet</h2>
+      <div class="upload-area" id="drop-zone">
+        <label for="file-input" class="upload-label">
+          <span class="upload-icon">&#128444;</span>
+          <span>Click to select or drag &amp; drop an image</span>
+          <span class="upload-hint">PNG or JPEG</span>
+        </label>
+        <input type="file" id="file-input" accept="image/png, image/jpeg" hidden>
+      </div>
+      <div id="image-info" class="image-info hidden">
+        <span id="info-filename"></span>
+        <span id="info-dimensions"></span>
+      </div>
+    </section>
+
+    <!-- Main Canvas -->
+    <section class="card hidden" id="canvas-section">
+      <h2>2. Configure Grid</h2>
+      <div class="grid-controls">
+        <div class="input-group">
+          <label for="input-rows">Rows</label>
+          <input type="number" id="input-rows" min="1" value="1">
+        </div>
+        <div class="input-group">
+          <label for="input-cols">Columns</label>
+          <input type="number" id="input-cols" min="1" value="1">
+        </div>
+        <button id="btn-generate" class="btn btn-primary">Generate Grid &amp; Preview</button>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="main-canvas"></canvas>
+      </div>
+    </section>
+
+    <!-- Preview Section -->
+    <section class="card hidden" id="preview-section">
+      <h2>3. Preview &amp; Fine-tune</h2>
+      <p class="section-hint">Adjust X/Y offsets per frame if needed. Changes apply in real-time.</p>
+      <div id="preview-grid" class="preview-grid"></div>
+    </section>
+
+    <!-- Export Section -->
+    <section class="card hidden" id="export-section">
+      <h2>4. Export</h2>
+      <div class="export-controls">
+        <div class="input-group">
+          <label for="input-prefix">Filename Prefix</label>
+          <input type="text" id="input-prefix" placeholder="player_run" value="sprite">
+        </div>
+        <button id="btn-export" class="btn btn-accent">Export Sliced Images (ZIP)</button>
+      </div>
+      <div id="export-status" class="export-status hidden"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Sprite Sheet Slicer &mdash; Internal Tool</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

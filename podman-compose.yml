@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  sprite-slicer:
+    build:
+      context: .
+      dockerfile: Containerfile
+    ports:
+      - "9600:9600"
+      - "9601:9601"
+    restart: unless-stopped

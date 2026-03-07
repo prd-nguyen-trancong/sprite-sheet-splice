@@ -1,0 +1,324 @@
+/* ── Reset & Base ─────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0f1117;
+  --surface: #1a1d27;
+  --surface-hover: #22263a;
+  --border: #2a2e3e;
+  --text: #e1e4ed;
+  --text-muted: #8b90a0;
+  --primary: #6c5ce7;
+  --primary-hover: #7f71ef;
+  --accent: #00cec9;
+  --accent-hover: #00e6e0;
+  --danger: #e74c3c;
+  --radius: 8px;
+  --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+}
+
+html {
+  font-size: 15px;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── Layout ──────────────────────────────────────────────── */
+header {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Card ────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.section-hint {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+/* ── Upload ──────────────────────────────────────────────── */
+.upload-area {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.upload-area:hover,
+.upload-area.dragover {
+  border-color: var(--primary);
+  background: rgba(108, 92, 231, 0.05);
+}
+
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.upload-icon {
+  font-size: 2.5rem;
+}
+
+.upload-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.image-info {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+/* ── Grid Controls ───────────────────────────────────────── */
+.grid-controls,
+.export-controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.input-group label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+input[type="number"],
+input[type="text"] {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  width: 100px;
+  transition: border-color 0.2s;
+}
+
+input[type="text"] {
+  width: 180px;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn {
+  padding: 0.55rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.btn-accent:hover {
+  background: var(--accent-hover);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Canvas ──────────────────────────────────────────────── */
+.canvas-wrapper {
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: repeating-conic-gradient(#1e2130 0% 25%, #171a25 0% 50%) 0 0 / 20px 20px;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+#main-canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Preview Grid ────────────────────────────────────────── */
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.preview-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.preview-item canvas {
+  background: repeating-conic-gradient(#1e2130 0% 25%, #171a25 0% 50%) 0 0 / 10px 10px;
+  border-radius: 4px;
+  max-width: 100%;
+}
+
+.preview-item .frame-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.preview-item .offset-controls {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.preview-item .offset-controls .input-group {
+  flex: 1;
+}
+
+.preview-item .offset-controls input {
+  width: 100%;
+}
+
+/* ── Export Status ────────────────────────────────────────── */
+.export-status {
+  margin-top: 0.75rem;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: var(--mono);
+}
+
+.export-status.success {
+  background: rgba(0, 206, 201, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0, 206, 201, 0.3);
+}
+
+.export-status.error {
+  background: rgba(231, 76, 60, 0.1);
+  color: var(--danger);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+/* ── Utilities ───────────────────────────────────────────── */
+.hidden {
+  display: none !important;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .grid-controls,
+  .export-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  input[type="number"],
+  input[type="text"] {
+    width: 100%;
+  }
+
+  .preview-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+}
